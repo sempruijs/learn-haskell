@@ -1,3 +1,7 @@
-lucky :: (Integral a) => a -> String  
-lucky 7 = "LUCKY NUMBER SEVEN!"  
-lucky x = "Sorry, you're out of luck, pal!"   
+factorial 0 = 1
+factorial n = n * factorial (n-1)
+
+third (_,_,c) = c
+
+length' [] = 0
+length' (_:xs) = 1 + length' xs
