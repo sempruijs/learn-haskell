@@ -14,5 +14,12 @@ shortsAdvice degrees
     where (freezing, cold, good) = (0, 20, 26)
 
 
+tail' xs = case xs of [] -> error "list should contain at least 1 item"
+                      (_:s) -> s
 
+
+describeLIst  :: [a] -> String
+describeLIst xs = "The list is " ++ case xs of [] -> "empty"
+                                               [x] -> "a singleton"
+                                               xs -> "larger"
 
