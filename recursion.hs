@@ -14,3 +14,17 @@ minimum' (x:xs)
   | otherwise = minTail
   where minTail = minimum' xs
  
+replicate' :: Int -> a -> [a]
+replicate' n x
+  | n <= 0 = []
+  | otherwise = x:replicate' (n - 1) x
+
+
+take' :: Int -> [a] -> [a]
+take' 0 _ = []
+take' n (x:xs) = x:take' (n-1) xs 
+
+reverse' :: [a] -> [a]
+reverse' [] = []
+reverse' [x] = [x]
+reverse' (x:xs) = reverse' xs ++ [x]
