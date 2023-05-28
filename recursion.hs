@@ -28,3 +28,42 @@ reverse' :: [a] -> [a]
 reverse' [] = []
 reverse' [x] = [x]
 reverse' (x:xs) = reverse' xs ++ [x]
+
+repeat' :: a -> [a]
+repeat' x = x : repeat' x
+
+zip' :: [a] -> [b] -> [(a,b)]
+zip' _ [] = []
+zip' [] _ = []
+zip' (x:xs) (y:ys) = (x,y) : zip' xs ys
+
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' _ [] = False
+elem' x (y:ys) = if x == y then True else elem' x ys
+
+
+
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (x:xs) =
+  let smallerSorted = quicksort [a | a <- xs, a <= x]
+      biggerSorted = quicksort [a | a <- xs, a > x]
+  in smallerSorted ++ [x] ++ biggerSorted
+
+isSorted :: (Ord a) => [a] -> Bool
+isSorted [] = True
+isSorted [x] = True
+isSorted (x:xs) 
+  | x <= head xs = isSorted xs
+  | otherwise = False
+
+bubbleSort :: (Ord a) => [a] -> [a]
+bubbleSort [] = []
+bubbleSort [x] = [x]
+bubbleSort [a,b] = if a > b then [b, a] else [a,b]
+bubbleSort (a:b:xs) 
+  | isSorted result = result
+  | a > b = bubbleSort (b:bubbleSort (a:xs))
+  | a <= b = bubbleSort (a:bubbleSort (b:xs))
+  where result = a:b:xs
+  
