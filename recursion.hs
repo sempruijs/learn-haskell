@@ -59,8 +59,6 @@ isSorted (x:xs)
 
 bubbleSort :: (Ord a) => [a] -> [a]
 bubbleSort [] = []
-bubbleSort [x] = [x]
-bubbleSort [a,b] = if a > b then [b, a] else [a,b]
 bubbleSort (a:b:xs) 
   | isSorted result = result
   | a > b = bubbleSort (b:bubbleSort (a:xs))
