@@ -18,3 +18,22 @@ instance Show TraficLight where
   show Red = "Red light"
   show Orange = "Orange light"
   show Green = "Green light"
+
+class YesNo a where
+  yesno :: a -> Bool
+
+instance YesNo Int where
+  yesno 0 = False
+  yesno _ = True
+
+instance YesNo String where
+  yesno "" = False
+  yesno s = s == "True"
+
+
+instance YesNo Bool where
+  yesno = id  
+
+instance YesNo (Maybe a) where
+  yesno (Just _) = True
+  yesno Nothing = False
